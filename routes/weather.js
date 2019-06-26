@@ -12,6 +12,12 @@ function WeatherController(){
         return: bool
     */
     let isPrimeNumber = function(date){
+        //date validation
+        if(isNaN(date) || date<1 || date>31){
+            return false;
+        }
+
+        // Prime Number Validation
         if (date===1) {
             return false;
         } else if(date === 2) {
@@ -30,9 +36,10 @@ function WeatherController(){
         logger.info(req.url,req.params);
 
         let city  = req.params.city;
-        var datetime = new Date();
-        if(isPrimeNumber(2)){
-            logger.info(`${datetime.getDate()} - Found prime date.`, 'Calling Weather API.');
+        let date = req.params.date;
+
+        if(isPrimeNumber(date)){
+            logger.info(`${date} - Found prime date.`, 'Calling Weather API.');
 
             request(`${global.WEATHER_BASE_URL}?q=${city}&appid=${global.WEATHER_APPID}`)
                 .then(function (report) {

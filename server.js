@@ -32,7 +32,7 @@ global.WEATHER_APPID = 'db44a86d5e096513f2fc30e11e29e4b8';
 /*End */
 
 /*================Route List==================== */
-server.get('api/weather/:city',weather.get);
+server.get('api/weather/:city/:date',weather.get);
 /*============================================== */
 
 server.listen(DEFAULT_PORT, function(){
